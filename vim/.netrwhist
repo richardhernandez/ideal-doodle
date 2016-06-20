@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/richard/Dropbox/Documents/Haskell/hr'
+let g:netrw_dirhist_2='/home/richard/Dropbox/Documents/Haskell/hr/memo-dp'
+let g:netrw_dirhist_3='/home/richard/Dropbox/Documents/Haskell/hr'
+let g:netrw_dirhist_4='/home/richard/Dropbox/Documents/Haskell/hr/recursion'

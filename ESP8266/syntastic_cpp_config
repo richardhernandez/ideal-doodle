@@ -1,0 +1,14 @@
+-I/Users/richard/lib/esp8266/tools/sdk/include
+-I/Users/richard/lib/esp8266/tools/sdk/lwip/include
+-I/Users/richard/lib/esp8266/tools/sdk/include
+-I/Users/richard/lib/esp8266/tools/sdk/lwip/include
+-I/Users/richard/lib/esp8266/cores/esp8266
+-I/Users/richard/lib/esp8266/variants/generic
+-Ibuild/lights/obj
+-I./
+-I/Users/richard/Documents/Arduino/libraries/ESP8266-Websocket/
+-I/Users/richard/lib/esp8266/libraries/ESP8266WebServer/src/
+-I/Users/richard/lib/esp8266/libraries/ESP8266WiFi/src/
+-I/Users/richard/lib/esp8266/libraries/ESP8266mDNS/
+-I/Users/richard/lib/esp8266/libraries/Wire/
+
