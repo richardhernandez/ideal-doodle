@@ -87,15 +87,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 alias ll='ls -lh'
 alias la='ls -ah'
 alias lla='ls -lah'
+alias vim='nvim'
+alias vi='nvim'
 
 export GOPATH=~/Go
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=$EDITOR
 
 # Command completion

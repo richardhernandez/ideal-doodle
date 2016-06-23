@@ -6,12 +6,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'tpope/vim-unimpaired'
-
-" Base16 Colors
-Plugin 'chriskempson/base16-vim'
+Plugin 'tpope/vim-fugitive'
 
 " Syntax highlighting for other things
 Plugin 'scrooloose/syntastic'
@@ -38,6 +36,26 @@ Plugin 'LucHermitte/local_vimrc'
 " YouCompleteMe: Autocomplete or somethingValloric/YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
+" JavaScript stuff
+Plugin 'jelera/vim-javascript-syntax'   " better syntax highlighting
+Plugin 'pangloss/vim-javascript'        " indentation and stuff
+
+" Airline - for a better status bar, I guess
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Themes - uncomment the one worth using
+" the gruvbox theme
+" Plugin 'morhetz/gruvbox'
+" Base16 Colors
+" Plugin 'chriskempson/base16-vim'
+" colorscheme base16-eighties
+" Hybrid
+Plugin 'w0ng/vim-hybrid'
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+
+set background=dark
 call vundle#end()            " required
 filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
@@ -54,7 +72,12 @@ filetype plugin indent on    " required
 " " Put your non-Plugin stuff after this line
 
 set t_Co=256
-let base16colorspace=256
+
+colorscheme hybrid
+if !has('nvim')
+    let base16colorspace=256
+endif
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -66,8 +89,8 @@ set autoindent
 " set colorcolumn=80
 " set nowrap
 syntax on
-set background=dark
-colorscheme base16-eighties
+" this is for truecolor support in nvim
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set incsearch
 set hlsearch
@@ -76,6 +99,7 @@ set smartcase
 set showmatch
 set mouse=a
 set cmdheight=2
+set laststatus=2
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -96,20 +120,51 @@ let g:ycm_auto_trigger = 1
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '!!'
+
+let g:ycm_filetype_blacklist = {
+    \ 'tagbar'  : 1,
+    \ 'qf'      : 1,
+    \ 'notes'   : 1,
+    \ 'markdown': 1,
+    \ 'unite'   : 1,
+    \ 'text'    : 1,
+    \ 'vimwiki' : 1,
+    \ 'pandoc'  : 1,
+    \ 'mail'    : 1
+    \}
+
+" YCM Javascript
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Sets local_vimrc to look for a non-default local vimrc
 let g:local_vimrc = '.local_vimrc.vim'
 
-" Delete current buffer
-nnoremap <C-q> :bd<CR>
+" CtrlP settings
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" Airline settings
+let g:airline#extensions#tabline#enabled = 1    " Automatically splay buffers into tabline
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 " Cycle through buffers
-nnoremap <C-k> :bnext<CR>
-nnoremap <C-j> :bprevious<CR>
+nnoremap <silent> <C-l> :bnext<CR>
+nnoremap <silent> <C-h> :bprevious<CR>
 
 " Search and center
 nnoremap n nzz
 nnoremap N Nzz
+
+" Remaps the return key to clear search highlight
+nnoremap <silent> <CR> :noh<CR><CR>
 
 " adds Arduino's .ino file extension
 au BufRead,BufNewFile *.ino set filetype=cpp
