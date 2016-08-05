@@ -166,6 +166,9 @@ nnoremap N Nzz
 " Remaps the return key to clear search highlight
 nnoremap <silent> <CR> :noh<CR><CR>
 
+nnoremap <silent> <C-a> :set relativenumber!<CR>
+inoremap <silent> <C-a> <ESC>:set relativenumber!<CR>li
+
 " adds Arduino's .ino file extension
 au BufRead,BufNewFile *.ino set filetype=cpp
 
